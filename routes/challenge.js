@@ -7,7 +7,7 @@ var api = express.Router();
 
 api.get('/randomly', ChallengeController.randomly);
 api.get('/getAll/:page?', ChallengeController.getAll);
-api.get('/words/:page?',ChallengeController.words);
-api.get('/byCategory',ChallengeController.byCategory);
+api.post('/words/:page?',ChallengeController.words);
+api.post('/byCategory',ChallengeController.byCategory);
 
 module.exports = api;

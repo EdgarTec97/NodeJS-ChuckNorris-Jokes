@@ -1,8 +1,9 @@
+## Development server
 You must have docker and docker-compose installed on your computer
 
 from the root of the project execute the following commands in order
 
-docker-compose up -d
+docker-compose up -d --build
 
 docker exec -it mongodb bash
 

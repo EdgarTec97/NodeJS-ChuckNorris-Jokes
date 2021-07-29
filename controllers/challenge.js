@@ -36,7 +36,7 @@ const ChallengeController = {
         try {
             const client = new Chuck();
             let stored;
-            const clientFind = await client.getRandomJoke(params.category);
+            const clientFind = await client.getRandomJoke(`${params.category}`);
             const find = await ChallengeModel.findOne({id: clientFind.id});
             if(!find){
                 const challenge = new ChallengeModel({
@@ -64,12 +64,12 @@ const ChallengeController = {
         }
 
 	    var items_per_page = 5;
-       // const params = req.body;
-       // if(params.text){
+        const params = req.body;
+        if(params.text){
             try {
                 const array = [];
                 const client = new Chuck();
-                const result = await client.search('dev');
+                const result = await client.search(`${params.text}`);
                 for await (const joker of result.items) { 
                     const find = await ChallengeModel.findOne({'id': joker.id});
                     if(!find){
@@ -99,7 +99,7 @@ const ChallengeController = {
                 console.log(error);
                 return res.status(500).send({message: 'Error executing function words'});
             }
-       // }
+        }
     },
     getAll: async (req,res) => {
         var page = 1;
